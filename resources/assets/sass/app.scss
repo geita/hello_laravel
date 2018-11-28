@@ -67,6 +67,17 @@ p {
     color: #fff;
   }
 }
+
+/* header */
+
+#logout {
+  cursor: default;
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+
 /* footer */
 
 footer {
