@@ -1,0 +1,1 @@
+﻿这是一个php sdk的使用范例，请先配置同级目录下的lib/config.php文件
