@@ -18,7 +18,7 @@ Route::get('signup', 'UsersController@create')->name('signup');
 
 Route::resource('users', 'UsersController');
 //Route::get('/users/{user}', 'UsersController@show')->name('users.show');
-
+//Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit');
 
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store')->name('login');
