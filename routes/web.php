@@ -26,14 +26,12 @@ Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
 Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');
 
-
-
-// Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-// Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-// Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-// Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
-
+//修改密码相关操作
 Route::get('password/reset', 'Auth\forgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/email', 'Auth\forgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+
+
+//微博相关操作
+Route::resource('statuses', 'StatusesController', ['only' => ['store','destroy']]);
