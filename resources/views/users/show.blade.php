@@ -9,17 +9,24 @@
           @include('users.shared._user_info', ['user' => $user])
           {{ $user->email }}
         </section>
+        <section class="stats">
+            @include('users.shared._stats', ['user' => $user])
+        </section>
       </div>
     </div>
      <div class="col-md-12">
-      @if (count($statuses) > 0)
-        <ol class="statuses">
-          @foreach ($statuses as $status)
-            @include('statuses._status')
-          @endforeach
-        </ol>
-        {!! $statuses->render() !!}
-      @endif
+        @if (Auth::check())
+            @include('users._follow_form')
+        @endif
+
+        @if (count($statuses) > 0)
+            <ol class="statuses">
+                @foreach ($statuses as $status)
+                    @include('statuses._status')
+                @endforeach
+            </ol>
+            {!! $statuses->render() !!}
+        @endif
     </div>
   </div>
 </div>

@@ -8,7 +8,7 @@ use Mail;
 
 class UsersController extends Controller
 {
-
+    public $follow_limit = 30;
     public function __construct()
     {
         $this->middleware('auth', [
@@ -120,4 +120,27 @@ class UsersController extends Controller
         });
     }
 
+    /**
+     * 获取关注列表
+     * @param  User
+     * @return [type]
+     */
+    public function followings(User $user)
+    {
+        $users = $user->followings()->paginate($this->follow_limit);
+        $title = '关注的人';
+        return view('users.show_follow', compact('users', 'title'));
+    }
+
+    /**
+     * 获取粉丝列表
+     * @param  User
+     * @return [type]
+     */
+    public function followers(User $user)
+    {
+        $users = $user->followers()->paginate($this->follow_limit);
+        $title = '粉丝';
+        return view('users.show_follow', compact('users', 'title'));
+    }
 }
